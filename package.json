@@ -1,0 +1,37 @@
+{
+  "name": "love2d-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "productName": "Love2D Studio",
+  "main": "desktop/main.js",
+  "description": "A Love2D development studio and DeepSeek agent for Zed",
+  "author": "Love2D Studio",
+  "license": "MIT",
+  "bin": {
+    "love2d-studio": "bin/love2d-studio.js"
+  },
+  "scripts": {
+    "start": "electron .",
+    "desktop": "electron .",
+    "package": "node scripts/package-desktop.mjs",
+    "icons": "node scripts/make-icon.mjs",
+    "studio": "node bin/love2d-studio.js studio",
+    "agent": "node src/agent/main.js",
+    "setup": "node bin/love2d-studio.js setup",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@agentclientprotocol/sdk": "2.8.0",
+    "adm-zip": "^0.6.1",
+    "jsonc-parser": "3.3.1",
+    "zod": "4.1.12"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^45.4.1"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+.research/
+.testprojects/
+dist/
+*.log
+.env
+.love2d-studio/cache/
+.love2d-studio/runtime.json
+.DS_Store
+Thumbs.db

@@ -1,0 +1,121 @@
+{
+  "Love2D: load callback": {
+    "prefix": "lveload",
+    "body": [
+      "function love.load()",
+      "  ${1:love.window.setTitle(\"My Game\")}",
+      "end",
+      "$0"
+    ],
+    "description": "LÖVE startup callback"
+  },
+  "Love2D: update callback": {
+    "prefix": "lveupdate",
+    "body": [
+      "function love.update(dt)",
+      "  ${1:-- update game state}",
+      "end",
+      "$0"
+    ],
+    "description": "LÖVE per-frame update callback"
+  },
+  "Love2D: draw callback": {
+    "prefix": "lvedraw",
+    "body": [
+      "function love.draw()",
+      "  love.graphics.clear(${1:0.055, 0.065, 0.085})",
+      "  ${2:-- draw the game}",
+      "  love.graphics.setColor(1, 1, 1, 1)",
+      "end",
+      "$0"
+    ],
+    "description": "LÖVE draw callback with cleared color state"
+  },
+  "Love2D: keypressed callback": {
+    "prefix": "lvekey",
+    "body": [
+      "function love.keypressed(key)",
+      "  if key == \"${1:escape}\" then",
+      "    ${2:love.event.quit()}",
+      "  end",
+      "end",
+      "$0"
+    ],
+    "description": "LÖVE keyboard callback"
+  },
+  "Love2D: load a Studio scene": {
+    "prefix": "lvescene",
+    "body": [
+      "local Scene = require(\"studio.scene\")",
+      "local scene = Scene.load(\"${1:main}\")",
+      "$0"
+    ],
+    "description": "Load a visual scene designed in Love2D Studio"
+  },
+  "Love2D: draw a scene": {
+    "prefix": "lvedrawscene",
+    "body": [
+      "scene:drawBackground()",
+      "scene:draw()",
+      "$0"
+    ],
+    "description": "Draw a loaded Studio scene"
+  },
+  "Love2D: load an image": {
+    "prefix": "lveimage",
+    "body": [
+      "local ${1:image} = love.graphics.newImage(\"${2:assets/images/player.png}\")",
+      "$0"
+    ],
+    "description": "Load an image"
+  },
+  "Love2D: draw an image": {
+    "prefix": "lvedrawimage",
+    "body": [
+      "love.graphics.draw(${1:image}, ${2:x}, ${3:y}, ${4:0}, ${5:1}, ${5:1})",
+      "$0"
+    ],
+    "description": "Draw a drawable at a position"
+  },
+  "Love2D: play a sound": {
+    "prefix": "lvesound",
+    "body": [
+      "local ${1:sound} = love.audio.newSource(\"${2:assets/audio/beep.ogg}\", \"${3:static}\")",
+      "${1:sound}:play()",
+      "$0"
+    ],
+    "description": "Load and play a sound"
+  },
+  "Love2D: module": {
+    "prefix": "lvemodule",
+    "body": [
+      "local ${1:Module} = {}",
+      "${1:Module}.__index = ${1:Module}",
+      "",
+      "function ${1:Module}.new(${2:...})",
+      "  local self = setmetatable({}, ${1:Module})",
+      "  ${3:-- initialize}",
+      "  return self",
+      "end",
+      "",
+      "return ${1:Module}",
+      "$0"
+    ],
+    "description": "A local Lua module with a constructor"
+  },
+  "Love2D: love.conf": {
+    "prefix": "lveconf",
+    "body": [
+      "function love.conf(t)",
+      "  t.identity = \"${1:my-game}\"",
+      "  t.version = \"11.5\"",
+      "  t.console = ${2:false}",
+      "  t.window.title = \"${3:My Game}\"",
+      "  t.window.width = ${4:960}",
+      "  t.window.height = ${5:600}",
+      "end",
+      "$0"
+    ],
+    "description": "LÖVE configuration file"
+  }
+}

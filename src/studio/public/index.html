@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="studio-token" content="__STUDIO_TOKEN__">
+  <meta name="studio-version" content="__STUDIO_VERSION__">
+  <title>Love2D Studio</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M12 20.4S3.8 15.6 3.8 9.4A4.6 4.6 0 0 1 12 6.3a4.6 4.6 0 0 1 8.2 3.1c0 6.2-8.2 11-8.2 11Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z" fill="currentColor"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 6.5A2 2 0 0 1 5.5 4.5h4l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2v-11Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.6a1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.16.62.68 1.09 1.33 1.17H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51.83Z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.5"/><path d="m5 17 5-5 4 4 3-3 3 3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m4.5 12.3 7.5 4.2 7.5-4.2M4.5 16.4l7.5 4.2 7.5-4.2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.5 13.8 9l5.5 1.8-5.5 1.8L12 18l-1.8-5.4L4.7 10.8 10.2 9 12 3.5Z"/><path d="m18.5 16 .7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M19 14v4.5a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2H10"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5V4Z"/><path d="M8 4v6h8V4M8 20v-6h8v6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6.5 7l.8 13h9.4l.8-13M10 11v5M14 11v5"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 7 4 12l5 5"/><path d="M4 12h9a6 6 0 0 1 6 6v1"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="m15 7 5 5-5 5"/><path d="M20 12h-9a6 6 0 0 0-6 6v1"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9.3h16M4 14.7h16M9.3 4v16M14.7 4v16"/></symbol>
+    <symbol id="i-cursor" viewBox="0 0 24 24"><path d="m6 3 12.5 9.2-5.6.8 3.2 6.2-2.5 1.3-3.2-6.2L6 18.4V3Z"/></symbol>
+    <symbol id="i-square" viewBox="0 0 24 24"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/></symbol>
+    <symbol id="i-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/></symbol>
+    <symbol id="i-type" viewBox="0 0 24 24"><path d="M5 6V4h14v2M12 4v16M8.5 20h7"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-zed" viewBox="0 0 24 24"><path d="M5 5h14l-9.8 10H19v4H5l9.8-10H5V5Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6"/></symbol>
+    <symbol id="i-fit" viewBox="0 0 24 24"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"/></symbol>
+    <symbol id="i-zoom-in" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M8 10.5h5M10.5 8v5"/></symbol>
+    <symbol id="i-zoom-out" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M8 10.5h5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v4.5M12 17h.01"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8.5 7-5 5 5 5M15.5 7l5 5-5 5M13.5 4l-3 16"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.3" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-maximize" viewBox="0 0 24 24"><path d="M8 4H4v4M16 4h4v4M8 20H4v-4M16 20h4v-4"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9a2.5 2.5 0 1 1 4.1 2c-.7.6-1.7 1-1.7 2.2"/><path d="M12 17h.01"/></symbol>
+  </svg>
+
+  <div id="app" class="app is-welcome">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"><svg><use href="#i-heart"/></svg></span>
+        <span class="brand-word">Love2D <strong>Studio</strong></span>
+      </div>
+
+      <button id="project-switcher" class="project-switcher" type="button" title="Switch project">
+        <span class="project-dot" id="project-dot"></span>
+        <span class="project-switcher-text" id="project-switcher-text">No project open</span>
+        <svg class="icon small"><use href="#i-chevron"/></svg>
+      </button>
+
+      <div class="save-status" id="save-status" data-state="saved">
+        <span class="save-dot"></span><span id="save-status-text">Saved</span>
+      </div>
+
+      <div class="top-actions">
+        <button class="btn btn-ai" id="btn-ai" type="button" title="Open Love2D Assistant" hidden>
+          <svg class="icon"><use href="#i-sparkle"/></svg><span>AI</span>
+        </button>
+        <button class="btn btn-ghost" id="btn-zed" type="button" title="Open this project in Zed">
+          <svg class="icon"><use href="#i-zed"/></svg><span>Open in Zed</span>
+        </button>
+        <button class="btn btn-ghost" id="btn-build" type="button" title="Open a project to build" disabled>
+          <svg class="icon"><use href="#i-package"/></svg><span>Build</span>
+        </button>
+        <button class="btn btn-icon btn-ghost" id="btn-setup" type="button" title="Setup" aria-label="Setup">
+          <svg class="icon"><use href="#i-settings"/></svg>
+        </button>
+        <div class="run-cluster">
+          <button class="btn btn-run" id="btn-run" type="button" title="Run game inside the editor">
+            <svg class="icon"><use href="#i-play"/></svg><span>Run</span>
+          </button>
+          <button class="btn btn-icon btn-stop" id="btn-stop" type="button" title="Stop game" aria-label="Stop game" disabled>
+            <svg class="icon"><use href="#i-stop"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="body-grid">
+      <nav class="rail" id="rail" aria-label="Project views">
+        <button class="rail-btn is-active" data-mode="scenes" type="button" title="Scenes" aria-label="Scenes">
+          <svg class="icon"><use href="#i-layers"/></svg><span>Scenes</span>
+        </button>
+        <button class="rail-btn" data-mode="assets" type="button" title="Assets" aria-label="Assets">
+          <svg class="icon"><use href="#i-image"/></svg><span>Assets</span>
+        </button>
+        <button class="rail-btn" data-mode="scripts" type="button" title="Scripts" aria-label="Scripts">
+          <svg class="icon"><use href="#i-code"/></svg><span>Scripts</span>
+        </button>
+        <button class="rail-btn" data-mode="project" type="button" title="Project" aria-label="Project">
+          <svg class="icon"><use href="#i-folder"/></svg><span>Project</span>
+        </button>
+        <div class="rail-spacer"></div>
+        <button class="rail-btn" id="rail-ai" type="button" title="AI Assistant" aria-label="AI Assistant" hidden>
+          <svg class="icon"><use href="#i-sparkle"/></svg><span>AI</span>
+        </button>
+        <button class="rail-btn" id="rail-setup" type="button" title="Setup" aria-label="Setup">
+          <svg class="icon"><use href="#i-settings"/></svg><span>Setup</span>
+        </button>
+        <button class="rail-btn" id="rail-console" type="button" title="Toggle console" aria-label="Toggle console">
+          <svg class="icon"><use href="#i-terminal"/></svg><span>Console</span>
+        </button>
+      </nav>
+
+      <aside class="sidebar" id="sidebar" aria-label="Project sidebar"></aside>
+
+      <main class="stage" id="stage">
+        <section class="welcome" id="welcome" aria-label="Welcome"></section>
+
+        <section class="editor" id="editor" hidden aria-label="Scene editor">
+          <div class="scene-toolbar">
+            <div class="tool-group" role="group" aria-label="Scene tools">
+              <button class="tool-btn is-active" data-tool="select" type="button" title="Select (V)" aria-label="Select tool">
+                <svg class="icon"><use href="#i-cursor"/></svg>
+              </button>
+              <button class="tool-btn" data-tool="rectangle" type="button" title="Rectangle (R)" aria-label="Rectangle tool">
+                <svg class="icon"><use href="#i-square"/></svg>
+              </button>
+              <button class="tool-btn" data-tool="circle" type="button" title="Circle (O)" aria-label="Circle tool">
+                <svg class="icon"><use href="#i-circle"/></svg>
+              </button>
+              <button class="tool-btn" data-tool="text" type="button" title="Text (T)" aria-label="Text tool">
+                <svg class="icon"><use href="#i-type"/></svg>
+              </button>
+              <button class="tool-btn" data-tool="sprite" type="button" title="Place selected asset (S)" aria-label="Sprite tool">
+                <svg class="icon"><use href="#i-image"/></svg>
+              </button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="scene-title-wrap">
+              <select id="scene-select" class="scene-select" aria-label="Current scene"></select>
+              <button class="icon-btn" id="btn-new-scene" type="button" title="New scene" aria-label="New scene">
+                <svg class="icon"><use href="#i-plus"/></svg>
+              </button>
+            </div>
+            <div class="toolbar-spacer"></div>
+            <div class="tool-group">
+              <button class="icon-btn" id="btn-undo" type="button" title="Undo (Ctrl+Z)" aria-label="Undo" disabled>
+                <svg class="icon"><use href="#i-undo"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-redo" type="button" title="Redo (Ctrl+Shift+Z)" aria-label="Redo" disabled>
+                <svg class="icon"><use href="#i-redo"/></svg>
+              </button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <div class="tool-group">
+              <button class="icon-btn is-active" id="btn-grid" type="button" title="Toggle grid" aria-label="Toggle grid" aria-pressed="true">
+                <svg class="icon"><use href="#i-grid"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-fit" type="button" title="Fit scene" aria-label="Fit scene">
+                <svg class="icon"><use href="#i-fit"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-zoom-out" type="button" title="Zoom out" aria-label="Zoom out">
+                <svg class="icon"><use href="#i-zoom-out"/></svg>
+              </button>
+              <button class="icon-btn" id="btn-zoom-in" type="button" title="Zoom in" aria-label="Zoom in">
+                <svg class="icon"><use href="#i-zoom-in"/></svg>
+              </button>
+            </div>
+            <div class="toolbar-divider"></div>
+            <button class="btn btn-small" id="btn-save-scene" type="button" title="Save scene (Ctrl+S)">
+              <svg class="icon"><use href="#i-save"/></svg><span>Save</span>
+            </button>
+            <button class="icon-btn danger-hover" id="btn-delete-scene" type="button" title="Delete scene" aria-label="Delete scene">
+              <svg class="icon"><use href="#i-trash"/></svg>
+            </button>
+          </div>
+
+          <div class="canvas-shell" id="canvas-shell">
+            <canvas id="scene-canvas" tabindex="0" aria-label="Scene canvas"></canvas>
+            <div class="canvas-empty" id="canvas-empty" hidden>
+              <svg class="icon"><use href="#i-layers"/></svg>
+              <strong>This scene is empty</strong>
+              <span>Press R for a rectangle, T for text, or drag an asset onto the canvas.</span>
+            </div>
+            <div class="canvas-hint" id="canvas-hint" hidden></div>
+            <div class="canvas-status">
+              <span id="canvas-coords">0, 0</span>
+              <span class="status-sep">•</span>
+              <span id="canvas-zoom">100%</span>
+              <span class="status-sep">•</span>
+              <span id="canvas-count">0 entities</span>
+              <span class="status-sep">•</span>
+              <span>Snap 8px</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="game-preview" id="game-preview" hidden aria-label="Embedded game preview">
+          <header class="game-preview-head">
+            <span class="game-live"><span class="dot"></span> LIVE</span>
+            <strong>Game preview</strong>
+            <span class="game-preview-meta" id="game-preview-meta">Starting LÖVE…</span>
+            <div class="game-preview-spacer"></div>
+            <button class="btn btn-small btn-ghost" id="btn-preview-stop" type="button" data-action="stop-game-preview">
+              <svg class="icon"><use href="#i-stop"/></svg><span>Stop</span>
+            </button>
+          </header>
+          <div class="game-preview-wrap">
+            <div class="game-preview-viewport" id="game-preview-viewport">
+              <div class="game-preview-screen" id="game-preview-screen"></div>
+              <div class="game-preview-overlay" id="game-preview-overlay">
+                <span class="game-preview-spinner"></span>
+                <strong>Starting game…</strong>
+                <span>Embedding the LÖVE window in the Studio.</span>
+              </div>
+            </div>
+          </div>
+          <footer class="game-preview-foot">
+            <span>Click the game once to give it keyboard focus.</span>
+            <span>Runs from your project files · logs stream below</span>
+          </footer>
+        </section>
+
+        <section class="script-view" id="script-view" hidden aria-label="Project scripts">
+          <header class="script-view-head">
+            <span class="script-view-icon"><svg class="icon"><use href="#i-code"/></svg></span>
+            <div class="script-view-title">
+              <strong id="script-view-name">No script selected</strong>
+              <span id="script-view-path">Choose a Lua file from the Scripts sidebar.</span>
+            </div>
+            <span class="script-view-meta" id="script-view-meta"></span>
+            <button class="btn btn-small btn-ghost" id="btn-script-copy" type="button" data-action="copy-script" disabled>
+              <svg class="icon"><use href="#i-copy"/></svg><span>Copy</span>
+            </button>
+            <button class="btn btn-small btn-secondary" id="btn-script-zed" type="button" data-action="open-script-zed" disabled>
+              <svg class="icon"><use href="#i-zed"/></svg><span>Open in Zed</span>
+            </button>
+          </header>
+          <div class="script-view-body" id="script-view-body">
+            <div class="script-empty" id="script-empty">
+              <svg class="icon"><use href="#i-code"/></svg>
+              <strong>Select a Lua script</strong>
+              <span>Scripts created by the AI, or any Lua file in the project, appear here.</span>
+            </div>
+            <div class="script-code" id="script-code" hidden></div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="inspector" id="inspector" hidden aria-label="Inspector"></aside>
+
+      <section class="console is-open" id="console" aria-label="Live game console">
+        <header class="console-header">
+          <button class="console-collapse" id="btn-console-toggle" type="button" title="Toggle console" aria-label="Toggle console">
+            <svg class="icon"><use href="#i-chevron"/></svg>
+          </button>
+          <span class="console-title">Live console</span>
+          <span class="console-run-state" id="console-run-state"><span class="dot"></span> stopped</span>
+          <div class="console-spacer"></div>
+          <button class="btn btn-small btn-ghost" id="btn-console-clear" type="button">Clear</button>
+          <button class="btn btn-small btn-run-console" id="btn-console-run" type="button">
+            <svg class="icon"><use href="#i-play"/></svg><span>Run</span>
+          </button>
+          <button class="btn btn-small btn-ghost" id="btn-console-stop" type="button" disabled>
+            <svg class="icon"><use href="#i-stop"/></svg><span>Stop</span>
+          </button>
+        </header>
+        <div class="console-output" id="console-output" role="log" aria-live="polite"></div>
+      </section>
+    </div>
+  </div>
+
+  <aside class="ai-drawer" id="ai-drawer" hidden aria-label="Love2D AI assistant">
+    <header class="ai-head">
+      <div class="ai-head-title">
+        <span class="ai-avatar"><svg><use href="#i-heart"/></svg></span>
+        <div>
+          <strong>Love2D Assistant</strong>
+          <span id="ai-model">DeepSeek</span>
+        </div>
+      </div>
+      <div class="ai-head-actions">
+        <button class="ai-icon-btn" id="ai-new" type="button" title="New chat" aria-label="New chat">
+          <svg class="icon"><use href="#i-refresh"/></svg>
+        </button>
+        <button class="ai-icon-btn" id="ai-setup" type="button" title="AI setup" aria-label="AI setup">
+          <svg class="icon"><use href="#i-settings"/></svg>
+        </button>
+        <button class="ai-icon-btn" id="ai-close" type="button" title="Close assistant" aria-label="Close assistant">
+          <svg class="icon"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </header>
+    <div class="ai-context" id="ai-context">Project-aware · tools require approval</div>
+    <div class="ai-messages" id="ai-messages" role="log" aria-live="polite"></div>
+    <div class="ai-composer-wrap" id="ai-composer-wrap">
+      <textarea id="ai-input" rows="1" placeholder="Ask about your game…" aria-label="Message Love2D Assistant"></textarea>
+      <div class="ai-composer-row">
+        <span class="ai-hint">Enter to send · Shift+Enter for a new line</span>
+        <button class="btn btn-small btn-ghost" id="ai-stop" type="button" hidden>Stop</button>
+        <button class="btn btn-small btn-primary" id="ai-send" type="button" disabled>Send</button>
+      </div>
+    </div>
+    <div class="ai-disclaimer">The assistant can edit project files and run the game after you approve each action.</div>
+  </aside>
+
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+  <dialog id="modal-dialog" class="modal"></dialog>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
